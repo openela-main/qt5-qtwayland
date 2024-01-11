@@ -4,7 +4,7 @@
 
 Summary: Qt5 - Wayland platform support and QtCompositor module
 Name:    qt5-%{qt_module}
-Version: 5.15.3
+Version: 5.15.9
 Release: 1%{?dist}
 
 License: LGPLv3
@@ -15,48 +15,62 @@ Source0: https://download.qt.io/official_releases/qt/%{majmin}/%{version}/submod
 ## Upstream patches
 ## repo: https://invent.kde.org/qt/qt/qtwayland
 ## branch: kde/5.15
-## git format-patch v5.15.3-lts-lgpl
-Patch1:  0001-Use-qWarning-and-_exit-instead-of-qFatal-for-wayland.patch
-Patch2:  0002-Translate-opaque-area-with-frame-margins.patch
-Patch3:  0003-Client-Send-exposeEvent-to-parent-on-subsurface-posi.patch
-Patch4:  0004-Get-correct-decoration-margins-region.patch
-Patch5:  0005-xdgshell-Tell-the-compositor-the-screen-we-re-expect.patch
-Patch6:  0006-client-Allow-QWaylandInputContext-to-accept-composed.patch
-Patch7:  0007-Client-Announce-an-output-after-receiving-more-compl.patch
-Patch8:  0008-Fix-issue-with-repeated-window-size-changes.patch
-Patch9:  0009-Include-locale.h-for-setlocale-LC_CTYPE.patch
-Patch10: 0010-Client-Connect-drags-being-accepted-to-updating-the-.patch
-Patch11: 0011-Client-Disconnect-registry-listener-on-destruction.patch
-Patch12: 0012-Client-Set-XdgShell-size-hints-before-the-first-comm.patch
-Patch13: 0013-Fix-build.patch
-Patch14: 0014-Fix-remove-listener.patch
-Patch15: 0015-Hook-up-queryKeyboardModifers.patch
-Patch16: 0016-Do-not-update-the-mask-if-we-do-not-have-a-surface.patch
-Patch17: 0017-Correctly-detect-if-image-format-is-supported-by-QIm.patch
-Patch18: 0018-Wayland-client-Fix-crash-when-windows-are-shown-hidd.patch
-Patch19: 0019-Client-Don-t-always-recreate-frame-callbacks.patch
-Patch20: 0020-Client-Always-destroy-frame-callback-in-the-actual-c.patch
-Patch21: 0021-Fix-the-logic-for-decoding-modifiers-map-in-Wayland-.patch
-Patch22: 0022-Wayland-client-use-wl_keyboard-to-determine-active-s.patch
-Patch23: 0023-Client-do-not-empty-clipboard-when-a-new-popup-windo.patch
-Patch24: 0024-Set-preedit-cursor-when-cursor-equals-to-0.patch
-Patch25: 0025-Client-Implement-DataDeviceV3.patch
-Patch26: 0026-Client-Delay-deletion-of-QDrag-object-until-after-we.patch
-Patch27: 0027-Client-Avoid-processing-of-events-when-showing-windo.patch
-Patch28: 0028-Handle-registry_global-out-of-constructor.patch
-Patch29: 0029-Connect-flushRequest-after-forceRoundTrip.patch
-Patch30: 0030-Move-the-wayland-socket-polling-to-a-separate-event-.patch
-Patch31: 0031-Check-pointer-for-null-before-use-in-ASSERT.patch
-Patch32: 0032-Do-not-create-decorations-when-the-shellSurface-is-n.patch
-Patch33: 0033-Use-wl_surface.damage_buffer-on-the-client-side.patch
-Patch34: 0034-Fix-crash-if-no-input-method-module-could-be-loaded.patch
-Patch35: 0035-Client-Remove-mWaitingForUpdateDelivery.patch
-Patch36: 0036-Cursor-position-0-should-still-show-the-cursor.patch
-Patch37: 0037-Update-the-preedit-styling-mapping.patch
-Patch38: 0038-client-Simplify-round-trip-behavior.patch
-Patch39: 0039-Client-Fix-opaque-region-setter.patch
-Patch40: 0040-Use-proper-dependencies-in-compile-tests.patch
-Patch41: 0041-Client-set-constraint-adjustments-for-popups-in-xdg.patch
+## git format-patch v5.15.8-lts-lgpl
+Patch1:  0001-Client-Announce-an-output-after-receiving-more-compl.patch
+Patch2:  0002-Fix-issue-with-repeated-window-size-changes.patch
+Patch3:  0003-Client-Connect-drags-being-accepted-to-updating-the-.patch
+Patch4:  0004-Client-Disconnect-registry-listener-on-destruction.patch
+Patch5:  0005-Client-Set-XdgShell-size-hints-before-the-first-comm.patch
+Patch6:  0006-Fix-build.patch
+Patch7:  0007-Fix-remove-listener.patch
+Patch8:  0008-Hook-up-queryKeyboardModifers.patch
+Patch9:  0009-Correctly-detect-if-image-format-is-supported-by-QIm.patch
+Patch10:  0010-Client-Don-t-always-recreate-frame-callbacks.patch
+Patch11:  0011-Client-Always-destroy-frame-callback-in-the-actual-c.patch
+Patch12:  0012-Wayland-client-use-wl_keyboard-to-determine-active-s.patch
+Patch13:  0013-Client-do-not-empty-clipboard-when-a-new-popup-windo.patch
+Patch14:  0014-Client-Implement-DataDeviceV3.patch
+Patch15:  0015-Client-Delay-deletion-of-QDrag-object-until-after-we.patch
+Patch16:  0016-Client-Avoid-processing-of-events-when-showing-windo.patch
+Patch17:  0017-Handle-registry_global-out-of-constructor.patch
+Patch18:  0018-Connect-flushRequest-after-forceRoundTrip.patch
+Patch19:  0019-Move-the-wayland-socket-polling-to-a-separate-event-.patch
+Patch20:  0020-Client-Remove-mWaitingForUpdateDelivery.patch
+Patch21:  0021-client-Simplify-round-trip-behavior.patch
+Patch22:  0022-Client-Fix-opaque-region-setter.patch
+Patch23:  0023-Use-proper-dependencies-in-compile-tests.patch
+Patch24:  0024-Revert-Client-Remove-mWaitingForUpdateDelivery.patch
+Patch25:  0025-Fix-race-condition-on-mWaitingForUpdateDelivery.patch
+Patch26:  0026-use-poll-2-when-reading-from-clipboard.patch
+Patch27:  0027-Reduce-memory-leakage.patch
+Patch28:  0028-Fix-build-with-libcxx-missing-array-include.patch
+Patch29:  0029-Only-close-popup-in-the-the-hierchary.patch
+Patch30:  0030-Build-fixes-for-GCC-11.patch
+Patch31:  0031-Check-pointer-for-null-before-use-in-ASSERT.patch
+Patch32:  0032-Use-wl_surface.damage_buffer-on-the-client-side.patch
+Patch33:  0033-Client-clear-focus-on-touch-cancel.patch
+Patch34:  0034-Guard-mResizeDirty-by-the-correctMutex.patch
+Patch35:  0035-client-Synthesize-enter-leave-event-for-popup-in-xdg.patch
+Patch36:  0036-Fix-compile-tests.patch
+Patch37:  0037-Use-CRLF-line-delimiter-for-text-uri-list-data.patch
+Patch38:  0038-Avoid-calling-requestUpdate-from-wrong-thread.patch
+Patch39:  0039-Call-finishDrag-in-QWaylandDataDevice-dragSourceCanc.patch
+Patch40:  0040-Hold-surface-read-lock-throughout-QWaylandEglWindow-.patch
+Patch41:  0041-Client-Ensure-that-wl_surface-lives-as-long-as-qtqui.patch
+Patch42:  0042-Keep-toplevel-windows-in-the-top-left-corner-of-the-.patch
+Patch43:  0043-Revert-Client-Ensure-that-wl_surface-lives-as-long-a.patch
+Patch44:  0044-Client-Add-F_SEAL_SHRINK-seal-to-shm-backing-file.patch
+Patch45:  0045-Client-Call-wl_output_release-upon-QWaylandScreen-de.patch
+Patch46:  0046-Client-Bump-wl_output-version.patch
+Patch47:  0047-Fix-frame-sync-related-to-unprotected-multithread-ac.patch
+Patch48:  0048-Client-Handle-zwp_primary_selection_device_manager_v.patch
+Patch49:  0049-Fixes-the-build-on-CentOS.patch
+Patch50:  0050-client-Avoid-protocol-error-with-invalid-min-max-siz.patch
+Patch51:  0051-Client-Fix-handling-of-Qt-BlankCursor.patch
+Patch52:  0052-client-Force-a-roundtrip-when-an-XdgOutput-is-not-re.patch
+Patch53:  0053-Client-Manage-QMimeData-lifecycle.patch
+Patch54:  0054-client-Do-not-cast-placeholder-screens-to-QWaylandSc.patch
+Patch55:  0055-Client-Remove-flip-popup-constraints.patch
 
 # Disable for now, there is a Qt bug making this broken
 # Patch102: qtwayland-decoration-support-backports-from-qt6.patch
@@ -186,6 +200,10 @@ popd
 %endif
 
 %changelog
+* Tue Apr 18 2023 Jan Grulich <jgrulich@redhat.com> - 5.15.9-1
+- 5.15.9
+  Resolves: bz#2175746
+
 * Mon Mar 28 2022 Jan Grulich <jgrulich@redhat.com> - 5.15.3-1
 - 5.15.3
   Resolves: bz#2061372
